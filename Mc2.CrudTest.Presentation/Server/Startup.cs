@@ -1,3 +1,5 @@
+using Mc2.CrudTest.Presentation.Server.Core.Repositories.Base;
+using Mc2.CrudTest.Presentation.Server.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,8 +22,19 @@ namespace Mc2.CrudTest.Presentation.Server
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.Scan(scan => scan
+               .FromCallingAssembly()
+               .AddClasses(classes => classes.AssignableTo<IService>())
+               .AsMatchingInterface()
+               .WithScopedLifetime());
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+             options.UseSqlServer(
+                Configuration.GetConnectionString("DefaultConnection")
+                 ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
