@@ -6,7 +6,7 @@ public class Customer : BaseEntity
 
     public string Lastname { get; private set; }
 
-    public DateOnly DateOfBirth { get; private set; }
+    public DateTime DateOfBirth { get; private set; }
 
     public string PhoneNumber { get; private set; }
 
