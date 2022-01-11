@@ -7,3 +7,4 @@ global using System.Linq;
 global using System.Linq.Expressions;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using System.Reflection;
+global using MediatR;
