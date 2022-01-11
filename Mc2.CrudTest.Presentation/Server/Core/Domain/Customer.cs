@@ -31,5 +31,23 @@ public class Customer : BaseEntity
         BankAccountNumber = bankAccountNumber;
         DateOfBirth = dataOfBirth;
     }
+
+    public Customer Edit(
+        string firstname,
+        string lastname,
+        string phoneNumber,
+        string email,
+        string bankAccountNumber,
+        DateTime dataOfBirth)
+    {
+        Firstname = firstname;
+        Lastname = lastname;
+        PhoneNumber = phoneNumber;
+        Email = email;
+        BankAccountNumber = bankAccountNumber;
+        DateOfBirth = dataOfBirth;
+
+        return this;
+    }
 }
 
