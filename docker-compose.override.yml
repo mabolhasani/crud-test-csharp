@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  applicationdb:
+        container_name: applicationdb 
+        ports:
+            - "21433:1433"
+        environment:
+            SA_PASWORD: "Jko3va-D9821jhsvGD"
+            ACCEPT_EULA: "Y"
+  mc2.crudtest.presentation.server:
+
+        container_name: crudtest
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - "ConnectionStrings:DefaultConnection=Data Source=applicationdb,21433;Initial Catalog=ApplicationDb;uid = sa;password = Jko3va-D9821jhsvGD;MultipleActiveResultSets=True;"
+        depends_on:
+            - applicationdb
+        volumes:
+            - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+            - ${HOME}/.aspnet/https:/root/.aspnet/https/
+        ports:
+            - "8002:80"
