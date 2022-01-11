@@ -2,6 +2,6 @@
 
 public static class ErrorMessages
 {
-    public static string CustomerNotFound => "Customer not Found.";
+    public static string CustomerNotFound => "Customer not found.";
 }
 
